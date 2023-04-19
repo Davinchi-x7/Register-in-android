@@ -31,8 +31,8 @@ class MainActivity : AppCompatActivity() {
 
 
         login.setOnClickListener {
-           val gotologin = Intent(this, login::class.java)
-            startActivity(gotologin)
+            val go_login = Intent(this, login::class.java)
+            startActivity(go_login)
         }
 
         reg = openOrCreateDatabase("User Reg", Context.MODE_PRIVATE, null)
@@ -54,6 +54,7 @@ class MainActivity : AppCompatActivity() {
                 val redirect = Intent(this, login::class.java)
                 startActivity(redirect)
             }
+
 
         }
     }
