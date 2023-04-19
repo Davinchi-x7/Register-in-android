@@ -1,10 +1,10 @@
 package com.example.reg
 
 import android.content.Context
+import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.ContactsContract.CommonDataKinds.Email
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var Email:EditText
     lateinit var Password:EditText
     lateinit var Create:Button
+    lateinit var login:Button
 
     lateinit var reg:SQLiteDatabase
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,7 +26,14 @@ class MainActivity : AppCompatActivity() {
         Secondname = findViewById(R.id.SecondName)
         Email = findViewById(R.id.Email_ad)
         Password = findViewById(R.id.Password)
-        Create = findViewById(R.id.Create_btn)
+        Create = findViewById(R.id.reg_btn)
+        login = findViewById(R.id.login_b_t)
+
+
+        login.setOnClickListener {
+           val gotologin = Intent(this, login::class.java)
+            startActivity(gotologin)
+        }
 
         reg = openOrCreateDatabase("User Reg", Context.MODE_PRIVATE, null)
         reg.execSQL("CREATE TABLE IF NOT EXISTS registry(firstname VARCHAR, secondname VARCHAR, email VARCHAR, password VARCHAR)")
@@ -43,7 +51,10 @@ class MainActivity : AppCompatActivity() {
             else{
                 reg.execSQL("INSERT INTO registry VALUES('\"+Edt_firstname+\"','\"+Edt_secondname+\"','\"+Edt_email+\"','\"+Edt_password+\"')")
                 Toast.makeText(this, "User created succesfully", Toast.LENGTH_SHORT).show()
+                val redirect = Intent(this, login::class.java)
+                startActivity(redirect)
             }
+
         }
     }
 }
