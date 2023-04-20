@@ -36,7 +36,7 @@ class login : AppCompatActivity() {
             if (email.isEmpty() || pass.isEmpty()){
                 Toast.makeText(this, "cannot read empty field", Toast.LENGTH_SHORT).show()
             }else{
-                val cursor = reg.rawQuery("SELECT * FROM users WHERE email=? AND password=?", arrayOf(email, pass))
+                val cursor = reg.rawQuery("SELECT * FROM registry WHERE email=? AND password=?", arrayOf(email, pass))
 
                 if (cursor != null && cursor.moveToFirst()) {
                     Toast.makeText(this, "successfully loged in", Toast.LENGTH_SHORT).show()
