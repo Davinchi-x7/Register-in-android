@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var Email:EditText
     lateinit var Password:EditText
     lateinit var Create:Button
-    lateinit var login:Button
+    lateinit var Login:Button
 
     lateinit var reg:SQLiteDatabase
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,10 +27,10 @@ class MainActivity : AppCompatActivity() {
         Email = findViewById(R.id.Email_ad)
         Password = findViewById(R.id.Password)
         Create = findViewById(R.id.reg_btn)
-        login = findViewById(R.id.login_b_t)
+        Login = findViewById(R.id.login_b_t)
 
 
-        login.setOnClickListener {
+        Login.setOnClickListener {
             val go_login = Intent(this, login::class.java)
             startActivity(go_login)
         }
